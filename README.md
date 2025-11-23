@@ -208,7 +208,7 @@ WARNING: This is a development server. Do not use it in production deployment.
 Open your web browser and navigate to:
 http://127.0.0.1:5000
 
-##Challenges Faced
+## Challenges Faced
 ### 1. Multi-Statement executions
 I was originally using mysql-connector, but multi-statement executions were not being compiled correctly, so I switched to PyMySQL. PyMySQL allows functionality for multi-statements in SQL, this is important when trying to delete a product from the add product page, for example.
 
