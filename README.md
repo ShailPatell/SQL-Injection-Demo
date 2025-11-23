@@ -155,7 +155,9 @@ Example configurations:
 
 If your MySQL password is "password123":
 
+
 pythondb = pymysql.connect(
+
     host="localhost",
     user="root",
     password="password123",  # ← Your actual password here
@@ -183,6 +185,7 @@ pythondb = pymysql.connect(
 
 If MySQL is on a different port:
 pythondb = pymysql.connect(
+
     host="localhost",
     port=3307,               # ← Add port if not default
     user="root",
@@ -190,6 +193,7 @@ pythondb = pymysql.connect(
     database="injection_demo",
     autocommit=True,
     client_flag=pymysql.constants.CLIENT.MULTI_STATEMENTS
+    
 )
 
 
