@@ -152,7 +152,9 @@ pythondb = pymysql.connect(
 )
 
 Example configurations:
+
 If your MySQL password is "password123":
+
 pythondb = pymysql.connect(
     host="localhost",
     user="root",
@@ -161,15 +163,24 @@ pythondb = pymysql.connect(
     autocommit=True,
     client_flag=pymysql.constants.CLIENT.MULTI_STATEMENTS
 )
+
 If you created a different MySQL user:
+
 pythondb = pymysql.connect(
-    host="localhost",
+
+    host="localhost", 
+    
     user="myusername",       # ← Your MySQL username
+    
     password="mypassword",   # ← Your MySQL password
+    
     database="injection_demo",
+    
     autocommit=True,
+    
     client_flag=pymysql.constants.CLIENT.MULTI_STATEMENTS
 )
+
 If MySQL is on a different port:
 pythondb = pymysql.connect(
     host="localhost",
