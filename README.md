@@ -87,12 +87,107 @@ In the password field, I entered the SQL injection statement, and logged in as a
 In the products page, enter the attack. 
 Attack: x', 0); UPDATE products SET price = 0.01; #
 Price: 0
+<img width="1906" height="806" alt="image" src="https://github.com/user-attachments/assets/eab1218a-3c1d-4edf-bf16-ff3ec6d5f7b5" />
+<img width="1880" height="822" alt="image" src="https://github.com/user-attachments/assets/501a720b-504a-4637-9fae-358d6ea790ce" />
 
 ### 3. Delete specific product
 In the products page, you can delete a product by name.
-Attack: *x', 0); DELETE FROM products WHERE name = 'Laptop'; #
+Attack: x', 0); DELETE FROM products WHERE name = 'Laptop'; #
 Price: 0
+<img width="1856" height="785" alt="image" src="https://github.com/user-attachments/assets/fad17d6d-64a8-439b-b77f-c00bce4cb6bf" />
+<img width="1272" height="774" alt="image" src="https://github.com/user-attachments/assets/9806618f-8f46-48db-8835-bfd9a664f88f" />
+
+<img width="1022" height="531" alt="image" src="https://github.com/user-attachments/assets/95e1d643-bd48-4250-8406-015179635a2e" />
+
 
 ### 4.  Insert malicious user
 Through the add products page, you can enter a statement to insert a user into the table.
-Attack: Test', 0); INSERT INTO users (username, password) VALUES ('backdoor', 'secret'); # 
+Attack: Test', 0); INSERT INTO users (username, password) VALUES ('SQL', 'Injection'); # 
+<img width="1570" height="728" alt="image" src="https://github.com/user-attachments/assets/587d08c0-de2d-4604-8de4-8da81993ecb5" />
+<img width="968" height="476" alt="image" src="https://github.com/user-attachments/assets/75363b5d-71d3-43c4-9919-0770ed35b13e" />
+<img width="907" height="364" alt="image" src="https://github.com/user-attachments/assets/e505b53b-e88e-4a70-84da-68fa4dbf4460" />
+
+## How to Run
+###Prerequisites
+
+Python 3.7 or higher
+MySQL Server 8.0 or higher
+pip 
+
+### Installation Steps
+#### Step 1: Clone the Repository
+#### Step 2: Install Python Dependencies
+pip install flask pymysql
+
+#### Step 3: Set Up MySQL Database
+First, log into MySQL:
+enter in bash terminal: mysql -u root -p
+Then run the setup script:
+mysql -u root -p < database/schema.sql
+
+This will:
+
+Create the injection_demo database
+Create users, products, and logs tables
+Insert default data (admin/admin123, test/test123, shail/shail123)
+
+#### Step 4: IMPORTANT - Configure Database Credentials
+YOU MUST UPDATE THESE LINES IN app.py TO MATCH YOUR MYSQL SETUP:
+Open app.py and find this section (around line 6-13):
+pythondb = pymysql.connect(
+    host="localhost",        # ← Change if MySQL is on different host
+    user="root",             # ← Change to YOUR MySQL username
+    password="Shail1234",    # ←  CHANGE THIS TO YOUR MYSQL PASSWORD
+    database="injection_demo",
+    autocommit=True,
+    client_flag=pymysql.constants.CLIENT.MULTI_STATEMENTS
+)
+Example configurations:
+If your MySQL password is "password123":
+pythondb = pymysql.connect(
+    host="localhost",
+    user="root",
+    password="password123",  # ← Your actual password here
+    database="injection_demo",
+    autocommit=True,
+    client_flag=pymysql.constants.CLIENT.MULTI_STATEMENTS
+)
+If you created a different MySQL user:
+pythondb = pymysql.connect(
+    host="localhost",
+    user="myusername",       # ← Your MySQL username
+    password="mypassword",   # ← Your MySQL password
+    database="injection_demo",
+    autocommit=True,
+    client_flag=pymysql.constants.CLIENT.MULTI_STATEMENTS
+)
+If MySQL is on a different port:
+pythondb = pymysql.connect(
+    host="localhost",
+    port=3307,               # ← Add port if not default
+    user="root",
+    password="yourpassword",
+    database="injection_demo",
+    autocommit=True,
+    client_flag=pymysql.constants.CLIENT.MULTI_STATEMENTS
+)
+
+
+#### Step 5: Run the application
+python app.py
+You should see output like:
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in production deployment.
+ * Running on http://127.0.0.1:5000
+
+Open your web browser and navigate to:
+http://127.0.0.1:5000
+
+##Challenges Faced
+### 1. Multi-Statement executions
+I was originally using mysql-connector, but multi-statement executions were not being compiled correctly, so I switched to PyMySQL. PyMySQL allows functionality for multi-statements in SQL, this is important when trying to delete a product from the add product page, for example.
+
+### 2. Resetting Database
+I was struggling to find ways to reset my database to the original schema I have in place through the web's frontend, but I found running the schema.sql file to be more convenient to use in a smaller demo like this. But because of this, when trying to test for dropping tables, you would need to run the schema again on MySQL.
+
