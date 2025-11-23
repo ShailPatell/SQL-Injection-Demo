@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div style="max-width: 800px; margin: 2rem auto; padding: 2rem; background: white; border-radius: 8px;">
+        <h2>Welcome, {{ user }}</h2>
+        
+        <h3>Products:</h3>
+        <ul style="list-style: none; padding: 0;">
+        {% for p in items %}
+            <li style="padding: 0.5rem; border-bottom: 1px solid #eee;">
+                <strong>{{ p['name'] }}</strong> — ${{ p['price'] }}
+            </li>
+        {% endfor %}
+        </ul>
+        
+        <div style="margin-top: 2rem;">
+            <a href="/add_product" style="display: inline-block; padding: 0.75rem 1.5rem; background: #007bff; color: white; text-decoration: none; border-radius: 4px; margin-right: 1rem;">Add Product</a>
+            <a href="/logout" style="color: #666; margin-right: 1rem;">Logout</a>
+            <a href="/" style="color: #666;">Back to Login</a>
+        </div>
+    </div>
+</body>
+</html>

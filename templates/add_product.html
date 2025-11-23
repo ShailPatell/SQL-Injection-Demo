@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Add Product - SQL Injection Demo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="bg">
+  <main class="card">
+    <div class="brand">
+      <h1>Add<span class="accent">Product</span></h1>
+      <p class="muted">Educational — Vulnerable form (Do not deploy)</p>
+    </div>
+
+    {% if message %}
+      <div class="alert" style="background: #4caf50;">{{ message }}</div>
+    {% endif %}
+
+    <form method="POST" class="form">
+      <label class="label">Product Name</label>
+      <input class="input" type="text" name="name" placeholder="e.g. Keyboard" required>
+
+      <label class="label">Price</label>
+      <input class="input" type="text" name="price" placeholder="e.g. 49.99" required>
+
+      <button class="btn" type="submit">Add Product</button>
+    </form>
+
+    <footer class="hint">
+      Try injection: <code>Test', 0); DROP TABLE products; --</code>
+    </footer>
+
+    <a href="/products" style="display: block; text-align: center; margin-top: 1rem; color: #666;">← Back to Products</a>
+  </main>
+</body>
+</html>
