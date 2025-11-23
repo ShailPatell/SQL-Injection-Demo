@@ -132,16 +132,25 @@ Create users, products, and logs tables
 Insert default data (admin/admin123, test/test123, shail/shail123)
 
 #### Step 4: IMPORTANT - Configure Database Credentials
+
 YOU MUST UPDATE THESE LINES IN app.py TO MATCH YOUR MYSQL SETUP:
+
 Open app.py and find this section (around line 6-13):
+
 pythondb = pymysql.connect(
     host="localhost",        # ← Change if MySQL is on different host
+    
     user="root",             # ← Change to YOUR MySQL username
+    
     password="Shail1234",    # ←  CHANGE THIS TO YOUR MYSQL PASSWORD
+    
     database="injection_demo",
+    
     autocommit=True,
+    
     client_flag=pymysql.constants.CLIENT.MULTI_STATEMENTS
 )
+
 Example configurations:
 If your MySQL password is "password123":
 pythondb = pymysql.connect(
