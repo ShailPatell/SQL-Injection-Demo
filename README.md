@@ -48,7 +48,7 @@ query = f"SELECT * FROM users WHERE username = '{user}' AND password = '{pwd}';"
 cursor.execute(query)
 This allows attackers to inject malicious SQL by manipulating the username or password fields.
 
-###2. Multi-Statement Support
+### 2. Multi-Statement Support
 The MySQL connection is configured to allow multiple statements:
 pythondb = pymysql.connect(
     host="localhost",
@@ -70,3 +70,14 @@ Add Product Form (/add_product)
 
 Product name field vulnerable to injection
 Enables database manipulation through INSERT statements
+
+
+## Injections and Vulnerabilities Example
+### 1. OR-Based Login Bypass
+Attack: ' OR '1'='1' #
+Result: Makes the WHERE clause always true
+SELECT * FROM users WHERE username = '' OR '1'='1' # ' AND password
+<img width="1876" height="937" alt="image" src="https://github.com/user-attachments/assets/ed807ccf-b47e-4b59-8f52-2c380919ab9c" />
+
+<img width="1846" height="772" alt="image" src="https://github.com/user-attachments/assets/27fc5a2b-2085-4080-8993-e3f7131ed52f" />
+
