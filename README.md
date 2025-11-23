@@ -26,20 +26,20 @@ sql-injection-demo/'
 
 └── README.md
 
-##Features
+## Features
 
 Login Bypass: Enter a sql statement to bypass the login form, logging in as a random user. 
 INSERT Injection: Product creation form vulnerable to injection
 Delete Injection: Remove products via injection
 
-##Technology Stack
+## Technology Stack
 
 Backend: Python 3 with Flask framework
 Database: MySQL with PyMySQL connector
 Frontend: HTML, CSS
 
 
-##Implementation Approach
+## Implementation Approach
 ### 1. Vulnerable Query Construction
 The application uses string concatenation instead of parameterized queries:
 
