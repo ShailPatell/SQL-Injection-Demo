@@ -4,16 +4,26 @@
 This project is a demo of SQL Injection vulnerabilities in a simple web application. It implements a deliberately vulnerable Flask web application to showcase various SQL injection attack vectors and their impacts. 
 
 ## Project Structure
-sql-injection-demo/
-├── app.py                   
-├── setup.sql                   
+sql-injection-demo/'
+
+├── app.py        
+
+├── setup.sql     
+
 ├── templates/
-│   ├── login.html             
-│   ├── products.html          
-│   └── add_product.html      
+
+│   ├── login.html     
+
+│   ├── products.html    
+
+│   └── add_product.html    
+
 ├── static/
+
 │   └── css/
-│       └── style.css          
+
+│       └── style.css      
+
 └── README.md
 
 ##Features
