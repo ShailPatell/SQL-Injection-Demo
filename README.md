@@ -127,9 +127,7 @@ mysql -u root -p < database/schema.sql
 
 This will:
 
-Create the injection_demo database
-Create users, products, and logs tables
-Insert default data (admin/admin123, test/test123, shail/shail123)
+Create the injection_demo database, reate users, products, and logs tables, and also insert default data (admin/admin123, test/test123, shail/shail123)
 
 #### Step 4: IMPORTANT - Configure Database Credentials
 
