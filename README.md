@@ -119,15 +119,14 @@ pip
 #### Step 2: Install Python Dependencies
 pip install flask pymysql
 
-#### Step 3: Set Up MySQL Database
-First, log into MySQL:
+#### Step 3: Set Up Local MySQL Database
+First, log into MySQL (using Local root user):
 enter in bash terminal: mysql -u root -p
+Go back to bash terminal.
 Then run the setup script:
 mysql -u root -p < database/schema.sql
 
-This will:
-
-Create the injection_demo database, reate users, products, and logs tables, and also insert default data (admin/admin123, test/test123, shail/shail123)
+This will create the injection_demo database, users, products, and logs tables, and also insert default data (admin/admin123, test/test123, shail/shail123)
 
 #### Step 4: IMPORTANT - Configure Database Credentials
 
@@ -135,7 +134,9 @@ YOU MUST UPDATE THESE LINES IN app.py TO MATCH YOUR MYSQL SETUP:
 
 Open app.py and find this section (around line 6-13):
 
+
 pythondb = pymysql.connect(
+
     host="localhost",        # ← Change if MySQL is on different host
     
     user="root",             # ← Change to YOUR MySQL username
