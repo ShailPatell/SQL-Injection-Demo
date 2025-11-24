@@ -108,7 +108,7 @@ Attack: Test', 0); INSERT INTO users (username, password) VALUES ('SQL', 'Inject
 <img width="907" height="364" alt="image" src="https://github.com/user-attachments/assets/e505b53b-e88e-4a70-84da-68fa4dbf4460" />
 
 ## How to Run
-###Prerequisites
+### Prerequisites
 
 Python 3.7 or higher
 MySQL Server 8.0 or higher
@@ -215,5 +215,5 @@ I was originally using mysql-connector, but multi-statement executions were not 
 I was struggling to find ways to reset my database to the original schema I have in place through the web's frontend, but I found running the schema.sql file to be more convenient to use in a smaller demo like this. But because of this, when trying to test for dropping tables, you would need to run the schema again on MySQL.
 
 ### 3. Unwanted Data Insertion
-When trying to delete products through the products page, I was inserting a product as well. The solution I found was to delete both the malicious entry and the product you want to delete. 
+When trying to delete products through the products page, I was inserting a product as well. The solution I found was to delete both the malicious entry and the product you want to delete. Attack: dummy', 0); DELETE FROM products WHERE name IN ('Laptop', 'dummy'); #
 
