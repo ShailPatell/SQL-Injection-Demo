@@ -51,6 +51,7 @@ This allows attackers to inject malicious SQL by manipulating the username or pa
 ### 2. Multi-Statement Support
 The MySQL connection is configured to allow multiple statements:
 pythondb = pymysql.connect(
+
     host="localhost",
     user="root", #REPLACE WITH USER 
     password="password", #REPLACE WITH YOUR MYSQL PASSWORD
